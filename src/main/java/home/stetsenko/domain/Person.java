@@ -1,4 +1,4 @@
-package domain;
+package home.stetsenko.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;

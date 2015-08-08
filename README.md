@@ -25,7 +25,7 @@ Hibernate решает проблему между хранением объек
 <br>
 <b>Person</b><br>
 <br>
-<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.domain;
+<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.home.stetsenko.domain;
  
 <span class="keyword">import</span> java.io.Serializable;
  
@@ -123,7 +123,7 @@ POJO ссылается на таблицу вашей базы данных, о
 <br>
 <b>PersonService</b><br>
 <br>
-<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.service;
+<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.home.stetsenko.service;
  
 <span class="keyword">import</span> java.util.List;
  
@@ -133,7 +133,7 @@ POJO ссылается на таблицу вашей базы данных, о
 <span class="keyword">import</span> org.hibernate.Query;
 <span class="keyword">import</span> org.hibernate.Session;
 <span class="keyword">import</span> org.hibernate.SessionFactory;
-<span class="keyword">import</span> org.krams.tutorial.domain.Person;
+<span class="keyword">import</span> org.krams.tutorial.home.stetsenko.domain.Person;
 <span class="keyword">import</span> org.springframework.stereotype.Service;
 <span class="keyword">import</span> org.springframework.transaction.annotation.Transactional;
  
@@ -145,7 +145,7 @@ POJO ссылается на таблицу вашей базы данных, о
 <span class="annotation">@Transactional</span>
 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonService</span> {</span>
  
- <span class="keyword">protected</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(<span class="string">"service"</span>);
+ <span class="keyword">protected</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(<span class="string">"home.stetsenko.service"</span>);
   
  <span class="annotation">@Resource</span>(name=<span class="string">"sessionFactory"</span>)
  <span class="keyword">private</span> SessionFactory sessionFactory;
@@ -253,15 +253,15 @@ session.delete()<br>
 Мы создали доменный и сервисный слои, давайте создадим Spring контроллер.<br>
 <br>
 <b>MainController</b><br>
-<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.controller;
+<pre><code class="java"><span class="keyword">package</span> org.krams.tutorial.home.stetsenko.controller;
  
 <span class="keyword">import</span> java.util.List;
  
 <span class="keyword">import</span> javax.annotation.Resource;
  
 <span class="keyword">import</span> org.apache.log4j.Logger;
-<span class="keyword">import</span> org.krams.tutorial.domain.Person;
-<span class="keyword">import</span> org.krams.tutorial.service.PersonService;
+<span class="keyword">import</span> org.krams.tutorial.home.stetsenko.domain.Person;
+<span class="keyword">import</span> org.krams.tutorial.home.stetsenko.service.PersonService;
 <span class="keyword">import</span> org.springframework.stereotype.Controller;
 <span class="keyword">import</span> org.springframework.ui.Model;
 <span class="keyword">import</span> org.springframework.web.bind.annotation.ModelAttribute;
@@ -277,7 +277,7 @@ session.delete()<br>
 <span class="annotation">@RequestMapping</span>(<span class="string">"/main"</span>)
 <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainController</span> {</span>
  
- <span class="keyword">protected</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(<span class="string">"controller"</span>);
+ <span class="keyword">protected</span> <span class="keyword">static</span> Logger logger = Logger.getLogger(<span class="string">"home.stetsenko.controller"</span>);
   
  <span class="annotation">@Resource</span>(name=<span class="string">"personService"</span>)
  <span class="keyword">private</span> PersonService personService;
@@ -329,7 +329,7 @@ session.delete()<br>
     <span class="keyword">public</span> String add(<span class="annotation">@ModelAttribute</span>(<span class="string">"personAttribute"</span>) Person person) {
   logger.debug(<span class="string">"Received request to add new person"</span>);
    
-     <span class="comment">// The "personAttribute" model has been passed to the controller from the JSP</span>
+     <span class="comment">// The "personAttribute" model has been passed to the home.stetsenko.controller from the JSP</span>
      <span class="comment">// We use the name "personAttribute" because the JSP uses that name</span>
    
   <span class="comment">// Call PersonService to do the actual adding</span>
@@ -391,7 +391,7 @@ session.delete()<br>
                 Model model) {
      logger.debug(<span class="string">"Received request to update person"</span>);
      
-     <span class="comment">// The "personAttribute" model has been passed to the controller from the JSP</span>
+     <span class="comment">// The "personAttribute" model has been passed to the home.stetsenko.controller from the JSP</span>
      <span class="comment">// We use the name "personAttribute" because the JSP uses that name</span>
       
      <span class="comment">// We manually assign the id because we disabled it in the JSP page</span>

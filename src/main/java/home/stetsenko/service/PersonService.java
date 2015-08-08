@@ -1,6 +1,6 @@
-package service;
+package home.stetsenko.service;
 
-import domain.Person;
+import home.stetsenko.domain.Person;
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -14,7 +14,7 @@ import java.util.List;
 @Transactional
 public class PersonService {
 
-    protected static Logger logger = Logger.getLogger("service");
+    protected static Logger logger = Logger.getLogger("home/stetsenko/service");
 
     @Resource(name="sessionFactory")
     private SessionFactory sessionFactory;

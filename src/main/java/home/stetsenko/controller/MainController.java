@@ -1,10 +1,10 @@
-package controller;
+package home.stetsenko.controller;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import domain.Person;
+import home.stetsenko.domain.Person;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import service.PersonService;
+import home.stetsenko.service.PersonService;
 
 
 /**
@@ -22,7 +22,7 @@ import service.PersonService;
 @RequestMapping("/main")
 public class MainController {
 
-    protected static Logger logger = Logger.getLogger("controller");
+    protected static Logger logger = Logger.getLogger("home/stetsenko/controller");
 
     @Resource(name="personService")
     private PersonService personService;
@@ -74,7 +74,7 @@ public class MainController {
     public String add(@ModelAttribute("personAttribute") Person person) {
         logger.debug("Received request to add new person");
 
-        // The "personAttribute" model has been passed to the controller from the JSP
+        // The "personAttribute" model has been passed to the home.stetsenko.controller from the JSP
         // We use the name "personAttribute" because the JSP uses that name
 
         // Call PersonService to do the actual adding
@@ -136,7 +136,7 @@ public class MainController {
                            Model model) {
         logger.debug("Received request to update person");
 
-        // The "personAttribute" model has been passed to the controller from the JSP
+        // The "personAttribute" model has been passed to the home.stetsenko.controller from the JSP
         // We use the name "personAttribute" because the JSP uses that name
 
         // We manually assign the id because we disabled it in the JSP page
